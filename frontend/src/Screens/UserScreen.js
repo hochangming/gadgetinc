@@ -4,8 +4,9 @@ const UserScreen=(props)=>{
     const handleClick=(e)=>{
         e.preventDefault();
         localStorage.removeItem('loginState');
+        
+        props.history.push('/')
         window.location.reload();
-        // props.history.push('/')
 
     }
     return (

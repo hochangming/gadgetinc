@@ -31,16 +31,14 @@ app.get('/', function (req, res) {
   var sql= "SELECT * FROM productsdata"
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
-    res.send(result);
-    console.log(result);
+    res.send(result); 
   }); 
 }) 
 app.get('/login', function (req, res) { 
   var sql= "SELECT firstname, emailAddress, password FROM customers"
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
-    res.send(result);
-    console.log(result);
+    res.send(result); 
   });
  }) 
  if (process.env.NODE_ENV === 'production') {
@@ -67,8 +65,7 @@ app.post('/register',function(req,res){
   var sql = "INSERT INTO customers (firstname, lastname, emailAddress, password) VALUES (?, ?, ?, ?)";
   con.query(sql,  [firstName,lastName,email,password], function (err, result) {
     if (err) throw err;
-    res.send(result);
-    console.log("1 record inserted");
+    res.send(result); 
   });  
 })
 app.listen(port,()=>{

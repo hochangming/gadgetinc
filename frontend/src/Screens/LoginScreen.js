@@ -18,8 +18,8 @@ const LoginScreen=(props)=>{
             // alert("Login Successful");
             localStorage.setItem('loginState', JSON.stringify(response.data.find(user => user.emailAddress == email)))  
             
+            props.history.push('/');
             window.location.reload(); 
-            // props.history.push('/');
 
         } else {
             alert("Proceeding to registration page...");
