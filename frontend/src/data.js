@@ -1,7 +1,7 @@
 import Axios from "axios";
 import config from "./config";
  
-Axios.get(`${config.SERVER_URI}`).then(response=>{
+Axios.get(`${config.SERVER_URI}/api`).then(response=>{
   console.log(response.data); 
   localStorage.setItem('dataproducts',JSON.stringify(response.data));
   console.log(JSON.parse(localStorage.getItem('dataproducts')));
