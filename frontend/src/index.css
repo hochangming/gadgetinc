@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* background-image: url(/images/backimg5.jpg);  */
+  background-color: grey;
+     /* Full height */
+    height: 100%; 
+    /* Center and scale the image nicely */
+    background-position: center; 
+    background-size: cover;
+    
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.wrapper {
+  height: 100vh;
+  display: flex;
+
+  /* Direction of the items, can be row or column */
+  flex-direction: column;
+}
+a{
+
+  color:white;
+  text-decoration: none;
+  padding: 1.5rem;
+}
+a:hover{
+  color:red;
+}
+header{
+  background-color: black;
+  color: white;
+  height: 70px;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  font-size: larger;
+  font-weight: bold;
+}
+footer{
+  background-color: black;
+  color: white; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+} 
+main {
+  flex: 1;
+}
+
+.products {
+  display: flex; 
+  flex-wrap: wrap;
+} 
+
+.product-card {
+  
+  padding: 2%;
+  flex-grow: 1; /*flex items take equal space in the row. */
+  flex-basis: 16%; /*sets the initial main size of a flex item*/
+
+  display: flex; /* so child elements can use flexbox stuff too! */
+  flex-direction: column;
+}
+
+.product-image img {
+  border-top: 0.1rem solid grey;  
+  padding: 2rem;  
+  width:  300px;
+  height: 300px; 
+  mix-blend-mode: multiply;
+  transition: transform 0.5s;
+  
+}
+.product-image img:hover{
+  transform: scale(1.1);
+}
+
+.product-image a h5{
+  margin: 1rem;
+  font-size: larger;
+  text-align: center;
+}
+.product-info {
+  padding: 2rem; 
+  margin-top: auto; 
+}
+.product-info h6{
+  margin: 1rem;
+  font-size: larger;
+  text-align: center;
+}
+.product-detail{
+  margin: 5rem;
+  font-size: large;
+}
+.product-action button{
+  margin: 5rem;
+  border: 0.2rem solid;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+}
+.product-action button:hover{
+  color: red;
+}
+@media (max-width: 920px) {
+  .product-card {
+    flex: 1 21%;
+  }
+}
+ .product-details{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+ }
+ @media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+.item-img{
+  mix-blend-mode: multiply;
+
+}

@@ -1,0 +1,64 @@
+import Axios from 'axios';
+import { json } from 'body-parser';
+import React, { useEffect, useState } from 'react';
+import { Button, FormGroup, FormControl } from "react-bootstrap";
+import {Link} from 'react-router-dom'
+const LoginScreen=(props)=>{
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+  
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        Axios.get('http://localhost:5000/login').then(response=>{
+            console.log(response.data);
+            console.log(response.data.find(user => user.emailAddress == email));
+
+        if (response.data.length > 0 && response.data.find(user => user.emailAddress == email)) {
+            // alert("Login Successful");
+            localStorage.setItem('loginState', JSON.stringify(response.data.find(user => user.emailAddress == email)))  
+            
+            window.location.reload(); 
+            // props.history.push('/');
+
+        } else {
+            alert("Proceeding to registration page...");
+            props.history.push('/register')
+        }
+        }).catch(err=>{
+            console.log(err)
+        })
+
+    }
+    function validateForm() {
+      return email.length > 0 && password.length > 0;
+    } 
+    
+    return (
+            <form onSubmit={handleSubmit}>
+                <h3>Sign In</h3>
+
+                <div className="form-group">
+                    <label>Email address</label>
+                    <input type="email" className="form-control" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)}/>
+                </div>
+
+                <div className="form-group">
+                    <label>Password</label>
+                    <input type="password" className="form-control" placeholder="Enter password" onChange={(e)=>setPassword(e.target.value)}/>
+                </div>
+
+                <div className="form-group">
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                    </div>
+                </div>
+
+                <button type="submit" className="btn btn-primary btn-block" disabled={!validateForm()} >Submit</button>
+                <p className="forgot-password text-right">
+                    Forgot <Link to="/register">password?</Link>
+                </p>
+            </form>
+    )
+}
+export default LoginScreen
