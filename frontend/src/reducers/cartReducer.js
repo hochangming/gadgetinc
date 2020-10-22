@@ -1,6 +1,7 @@
 import initState from '../data';  
 import { ADD_TO_CART,REMOVE_ITEM,SUB_QUANTITY,ADD_QUANTITY,ADD_SHIPPING} from '../components/ReducerTypes'
 import Axios from 'axios'; 
+import config from '../config';
 //Reducers specify how the application’s state changes in response to actions sent to the store.
 const cartReducer= (state = initState,action)=>{
    
@@ -15,7 +16,7 @@ const cartReducer= (state = initState,action)=>{
          let existed_item= state.addedItems.find(item=> action.id == item.id)
          console.log(existed_item);
          try{ 
-             Axios.post('http://localhost:5000/cart',addedItem).then(response=>{ 
+             Axios.post(`${config.SERVER_URI}/api/cart`,addedItem).then(response=>{ 
                     console.log(response.data)
                 }
                 )  
