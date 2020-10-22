@@ -6,7 +6,7 @@ const HomeScreen =(props)=>{
  
   const [items, setItems] = useState([])
   useEffect(() => {
-    Axios.get(`${config.SERVER_URI}`).then(response=>{
+    Axios.get(`${config.SERVER_URI}/api`).then(response=>{
       console.log(response.data);
       setItems(response.data);
     })

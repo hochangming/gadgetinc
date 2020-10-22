@@ -1,4 +1,5 @@
 import Axios from "axios";
+import config from "./config";
  
 Axios.get(`${config.SERVER_URI}`).then(response=>{
   console.log(response.data); 

@@ -9,7 +9,7 @@ const ProductScreen =(props)=>{
     const [productImg, setProductImg] = useState();
     const [productDesc, setProductDesc] = useState();
     useEffect(() => {
-        Axios.get(`${config.SERVER_URI}`).then(response=>{
+        Axios.get(`${config.SERVER_URI}/api`).then(response=>{
             console.log(response.data[props.match.params.id-1].desc);
             setProductImg(response.data[props.match.params.id-1].image);
             setProductDesc(response.data[props.match.params.id-1].desc)

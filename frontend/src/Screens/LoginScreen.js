@@ -10,7 +10,7 @@ const LoginScreen=(props)=>{
   
     const handleSubmit=(e)=>{
         e.preventDefault();
-        Axios.get(`${config.SERVER_URI}/login`).then(response=>{
+        Axios.get(`${config.SERVER_URI}/api/login`).then(response=>{
             console.log(response.data);
             console.log(response.data.find(user => user.emailAddress == email));
 

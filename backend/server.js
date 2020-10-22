@@ -27,14 +27,14 @@ app.use(cors());
 
 app.use(express.json());
  
-app.get('/', function (req, res) {
+app.get('/api', function (req, res) {
   var sql= "SELECT * FROM productsdata"
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     res.send(result); 
   }); 
 }) 
-app.get('/login', function (req, res) { 
+app.get('/api/login', function (req, res) { 
   var sql= "SELECT firstname, emailAddress, password FROM customers"
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
@@ -47,15 +47,15 @@ app.get('/login', function (req, res) {
 
   // Express serve up index.html file if it doesn't recognize route
   
-  app.get('/*', (req, res) => {
+  app.get('/api/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   });
 } 
-app.post('/cart',function(req,res){
+app.post('/api/cart',function(req,res){
   console.log(req.body);
   res.send(req.body);
 })
-app.post('/register',function(req,res){ 
+app.post('/api/register',function(req,res){ 
 
     const firstName = req.body.firstname;
     const lastName = req.body.lastName;

@@ -9,7 +9,7 @@ const RegisterScreen=(props)=>{
 
     const handleClick =(e)=>{
         e.preventDefault();
-        Axios.post(`${config.SERVER_URI}/register`,{
+        Axios.post(`${config.SERVER_URI}/api/register`,{
             firstname: firstName,
             lastName: lastName,
             password: password,
