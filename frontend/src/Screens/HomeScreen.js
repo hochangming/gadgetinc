@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import Axios from 'axios'; 
+import config from '../config';
 const HomeScreen =(props)=>{
  
   const [items, setItems] = useState([])
   useEffect(() => {
-    Axios.get('http://localhost:5000/').then(response=>{
+    Axios.get(`${config.SERVER_URI}`).then(response=>{
       console.log(response.data);
       setItems(response.data);
     })

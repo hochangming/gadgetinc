@@ -21,6 +21,8 @@ var con = mysql.createPool({
 //     console.log("Table created");
 //   });
 // });
+const port = process.env.PORT || 5000;
+
 app.use(cors());
 
 app.use(express.json());
@@ -41,6 +43,16 @@ app.get('/login', function (req, res) {
     console.log(result);
   });
  }) 
+ if (process.env.NODE_ENV === 'production') {
+  // Exprees will serve up production assets
+  app.use(express.static('frontend/build'));
+
+  // Express serve up index.html file if it doesn't recognize route
+  
+  app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  });
+} 
 app.post('/cart',function(req,res){
   console.log(req.body);
   res.send(req.body);
@@ -59,6 +71,6 @@ app.post('/register',function(req,res){
     console.log("1 record inserted");
   });  
 })
-app.listen(5000,()=>{
+app.listen(port,()=>{
   console.log('port 5000 created')
 })

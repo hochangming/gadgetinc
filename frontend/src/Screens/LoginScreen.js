@@ -3,13 +3,14 @@ import { json } from 'body-parser';
 import React, { useEffect, useState } from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import {Link} from 'react-router-dom'
+import config from '../config';
 const LoginScreen=(props)=>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
   
     const handleSubmit=(e)=>{
         e.preventDefault();
-        Axios.get('http://localhost:5000/login').then(response=>{
+        Axios.get(`${config.SERVER_URI}/login`).then(response=>{
             console.log(response.data);
             console.log(response.data.find(user => user.emailAddress == email));
 

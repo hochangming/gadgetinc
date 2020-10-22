@@ -4,11 +4,12 @@ import arrayOfObjects from '../data';
 import { connect } from 'react-redux'
 import { addToCart } from '../actions/cartActions'
 import Axios from 'axios'; 
+import config from '../config';
 const ProductScreen =(props)=>{
     const [productImg, setProductImg] = useState();
     const [productDesc, setProductDesc] = useState();
     useEffect(() => {
-        Axios.get('http://localhost:5000/').then(response=>{
+        Axios.get(`${config.SERVER_URI}`).then(response=>{
             console.log(response.data[props.match.params.id-1].desc);
             setProductImg(response.data[props.match.params.id-1].image);
             setProductDesc(response.data[props.match.params.id-1].desc)

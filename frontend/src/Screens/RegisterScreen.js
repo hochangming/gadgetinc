@@ -1,5 +1,6 @@
 import Axios from 'axios'; 
 import React, { useEffect, useState } from 'react'
+import config from '../config';
 const RegisterScreen=(props)=>{
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -8,7 +9,7 @@ const RegisterScreen=(props)=>{
 
     const handleClick =(e)=>{
         e.preventDefault();
-        Axios.post('http://localhost:5000/register',{
+        Axios.post(`${config.SERVER_URI}/register`,{
             firstname: firstName,
             lastName: lastName,
             password: password,
