@@ -13,12 +13,17 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3"
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1"
   },
   "scripts": {
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
     "build": "rm -rf dist && babel backend --out-dir dist  && cd frontend && npm install && npm run build",
     "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
+  },
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
   },
   "author": "",
   "license": "ISC"

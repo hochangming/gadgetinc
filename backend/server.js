@@ -9,8 +9,8 @@ var con = mysql.createPool({
   host: "us-cdbr-east-02.cleardb.com",
   user: "bfa546afba69ce",
   password: "16962866",
-  database: "heroku_a9046155c2a5415"
-
+  database: "heroku_a9046155c2a5415",
+  port: "3306"
 });
 // con.connect(function(err) {
 //   if (err) throw err;
