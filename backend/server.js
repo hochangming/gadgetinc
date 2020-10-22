@@ -11,7 +11,7 @@ var con = mysql.createPool({
   password: "16962866",
   database: "heroku_a9046155c2a5415",
   port: "3306"
-});
+}); 
 // con.connect(function(err) {
 //   if (err) throw err;
 //   console.log("Connected!");
