@@ -10,8 +10,7 @@ Axios.get(`${config.SERVER_URI}`).then(response=>{
 })
  
 const initState = {
-  items: localStorage.getItem('dataproducts')? JSON.parse(localStorage.getItem('dataproducts')) : '',
-  // items: '',
+  items: JSON.parse(localStorage.getItem('dataproducts')), 
   addedItems:[],
   total: 0
 
