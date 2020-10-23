@@ -1,6 +1,7 @@
 import Axios from 'axios'; 
 import React, { useEffect, useState } from 'react'
 import config from '../config';
+import {Link} from 'react-router-dom'
 const RegisterScreen=(props)=>{
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -51,7 +52,7 @@ const RegisterScreen=(props)=>{
 
         <button onClick={(e)=>handleClick(e)} type="submit" className="btn btn-primary btn-block" disabled={!validateForm()}>Sign Up</button>
         <p className="forgot-password text-right">
-            Already registered? <a href="/login">Sign In</a>
+            Already registered? <Link to="/login">Sign In</Link>
         </p>
     </form>
 
