@@ -6,7 +6,7 @@ import { removeItem,addQuantity,subtractQuantity} from '../actions/cartActions'
 import ShippingScreen from './ShippingScreen';
 
 const CartScreen =(props)=>{ 
-    const [cartItem, setCartItem] = useState(JSON.parse(localStorage.getItem('cartItems')))
+    const [cartItem, setCartItem] = useState(localStorage.getItem('cartItems')? JSON.parse(localStorage.getItem('cartItems')): [])
  
      const handleClick = (e)=>{
         e.preventDefault();
@@ -22,6 +22,9 @@ const CartScreen =(props)=>{
     const handleRemove = (id)=>{
         setCartItem(cartItem.filter(item => item.id !== id));
         localStorage.setItem('cartItems',JSON.stringify(cartItem));
+        if (cartItem.length === 1) {
+        localStorage.removeItem("cartItems");
+    }
      }
      console.log(cartItem)
     //to add the quantity
@@ -100,9 +103,9 @@ const CartScreen =(props)=>{
         {/* <ShippingScreen key={props.history} id={props.history}/>                 */}
            <div className="container">
                 <div className="collection">
-                    <li className="collection-item"> 
+                    <li className="collection-item-1"> 
                         </li>
-                        <li className="collection-item"><b>Total: ${
+                        <li className="collection-item-2"><b>Total: ${
                             cartItem.reduce((a,c)=> a + c.count * c.price, 0) 
                         }</b></li>
                     </div>
@@ -113,19 +116,5 @@ const CartScreen =(props)=>{
     </div>
 
     )
-}
-
-// const mapStateToProps = (state)=>{
-//     return{
-//         items: state.addedItems
-//     }
-// }
-// const mapDispatchToProps = (dispatch)=>{
-//     return{
-//         removeItem: (id)=>{dispatch(removeItem(id))},
-//         addQuantity: (id)=>{dispatch(addQuantity(id))},
-//         subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
-//     }
-// }
-// export default connect(mapStateToProps,mapDispatchToProps)(CartScreen) 
+} 
 export default CartScreen;

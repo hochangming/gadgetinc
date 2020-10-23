@@ -8,7 +8,14 @@ import LoginScreen from './Screens/LoginScreen';
 import RegisterScreen from './Screens/RegisterScreen';
 import UserScreen from './Screens/UserScreen';
 import ShippingScreen from './Screens/ShippingScreen';
+import {FaShoppingCart, FaHome} from "react-icons/fa"
 
+//  const open = () => {
+//   document.querySelector(".sidebarcon").classList.add("openSidebar");
+// }
+// const close = () =>{
+//   document.querySelector(".sidebarcon").classList.remove("openSidebar");
+// }
 function App() {
   const [state, setstate] = useState(); 
   useEffect(() => {
@@ -20,7 +27,9 @@ function App() {
     <BrowserRouter>
       <div class="wrapper">
           <header>
-          <Link to="/">Home</Link> 
+           {/* <button className="sidebarbtn" onClick={open}>
+              &#9776;</button> */}
+          <Link to="/">Home<FaHome/></Link> 
           <h1>Gadget Inn</h1>
           <div>
           {localStorage.getItem('loginState') ? 
@@ -28,9 +37,18 @@ function App() {
           <Link to="/login">Log In</Link>
           }
           
-          <Link to="/cart">Cart</Link> 
+          <Link to="/cart">Cart<FaShoppingCart/></Link> 
           </div>
            </header>
+                     {/* <aside className="sidebarcon">
+            <h3 className = "header3">Shop By Category</h3>
+            <ul className="sidebarcon-menu">
+              <button className="button-close"
+                onClick={close}>Close &times;</button>
+              <li><Link to="/category/Mobile Phones">Mobile Phones</Link></li>
+              <li><Link to="/category/Tablets">Tablets</Link></li>
+            </ul>
+          </aside> */}
           <main>
           <Switch> 
           <Route path ="/user" component={UserScreen}></Route>  
@@ -42,7 +60,8 @@ function App() {
           </Switch>
           </main>
           
-          <footer>I'm a 30px tall footer</footer>
+          <footer> &copy;GadgetInn2020
+          </footer>
       </div>
 </BrowserRouter>
   );

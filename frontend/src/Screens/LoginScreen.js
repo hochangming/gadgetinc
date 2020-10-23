@@ -23,7 +23,7 @@ const LoginScreen=(props)=>{
             window.location.reload(); 
 
         } else {
-            alert("Proceeding to registration page...");
+            alert("Click OK to sign up");
             props.history.push('/register')
         }
         }).catch(err=>{
@@ -36,7 +36,7 @@ const LoginScreen=(props)=>{
     } 
     
     return (
-            <form onSubmit={handleSubmit}>
+            <form className="Sign-in-screen" onSubmit={handleSubmit}>
                 <h3>Sign In</h3>
 
                 <div className="form-group">

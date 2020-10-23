@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
+const ShippingScreen=(props)=>{
+    return (
+        <div>Shipping Screen</div>
+    )
+}
+
+export default ShippingScreen;
 //import { addShipping } from './actions/cartActions'
 // class ShippingScreen extends Component{
     
