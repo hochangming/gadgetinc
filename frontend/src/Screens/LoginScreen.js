@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import config from '../config';
+import Cookie from 'js-cookie'
 const LoginScreen=(props)=>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -17,7 +18,7 @@ const LoginScreen=(props)=>{
         if (response.data.length > 0 && response.data.find(user => user.emailAddress == email)) {
             // alert("Login Successful");
             localStorage.setItem('loginState', JSON.stringify(response.data.find(user => user.emailAddress == email)))  
-            
+            // Cookie.set('loginState',JSON.stringify(response.data.find(user => user.emailAddress == email)))
             props.history.push('/');
             window.location.reload(); 
 

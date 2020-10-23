@@ -13,7 +13,7 @@ function App() {
   const [state, setstate] = useState(); 
   useEffect(() => {
     setstate(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : '')
-    return () => { 
+     return () => { 
     }
   }, [])
    return (

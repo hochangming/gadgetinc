@@ -8,7 +8,7 @@ const cartReducer= (state = initState,action)=>{
     //INSIDE HOME COMPONENT
     if(action.type === ADD_TO_CART){
         
-        console.log(state)
+        console.log(state.items)
           let addedItem = state.items.find(item=> item.id == action.id)
          
 

@@ -12,6 +12,13 @@ var con = mysql.createPool({
   database: "heroku_a9046155c2a5415",
   port: "3306"
 }); 
+// var con = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "password",
+//   database: "ecommerce",
+//   port: "3306"
+// }); 
 // con.connect(function(err) {
 //   if (err) throw err;
 //   console.log("Connected!");

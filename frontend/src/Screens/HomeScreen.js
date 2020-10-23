@@ -2,13 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import Axios from 'axios'; 
 import config from '../config';
+import Cookie from 'js-cookie'
 const HomeScreen =(props)=>{
  
   const [items, setItems] = useState([])
+  const [loaded, setLoaded] = useState(false);  
+  
   useEffect(() => {
+    
     Axios.get(`${config.SERVER_URI}/api`).then(response=>{
       console.log(response.data);
       setItems(response.data);
+      localStorage.setItem('dataproducts',JSON.stringify(response.data));
+      Cookie.set('dataproducts',response.data)
+     setLoaded(true);
     })
     return () => {
        
@@ -16,8 +23,10 @@ const HomeScreen =(props)=>{
   }, [])
 
     console.log();
-    return (
-      <section class="products">  
+    return ( 
+      <div> 
+      { !loaded?<div>loading...</div> :
+        <section class="products">  
          {items.map(item=>{
                 return  <div class="product-card">  
                 <div class="product-image">
@@ -31,8 +40,8 @@ const HomeScreen =(props)=>{
                 </div> 
                 </div>  
             })}      
-      </section>
-
+      </section>}
+  </div>
 
     )
 }

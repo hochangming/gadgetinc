@@ -6,28 +6,62 @@ import { removeItem,addQuantity,subtractQuantity} from '../actions/cartActions'
 import ShippingScreen from './ShippingScreen';
 
 const CartScreen =(props)=>{ 
-    // const [cartItem, setCartItem] = useState(JSON.parse(localStorage.getItem('state')))
+    const [cartItem, setCartItem] = useState(JSON.parse(localStorage.getItem('cartItems')))
+ 
+     const handleClick = (e)=>{
+        e.preventDefault();
+        if(localStorage.getItem('loginState')){
 
-  
-     //to remove the item completely
-    const handleRemove = (id)=>{
-        props.removeItem(id);
+        } else{ 
+            console.log(props.id) 
+            props.history.push('/login')
+        }
     }
+ 
+    //  //to remove the item completely
+    const handleRemove = (id)=>{
+        setCartItem(cartItem.filter(item => item.id !== id));
+        localStorage.setItem('cartItems',JSON.stringify(cartItem));
+     }
+     console.log(cartItem)
     //to add the quantity
     const handleAddQuantity = (id)=>{
-        props.addQuantity(id);
+        let cartItemClone = cartItem;
+        let addedItem = cartItem.find(item=> item.id == id)
+        var index = cartItem.indexOf(id);
+        addedItem.count++;
+        if (~index) { 
+            cartItem[index] = addedItem;
+        }
+        console.log(cartItem);
+        setCartItem(cartItem);
+     
+        localStorage.setItem('cartItems',JSON.stringify(cartItem));
+
     }
     //to substruct from the quantity
     const handleSubtractQuantity = (id)=>{ 
-        props.subtractQuantity(id);
+        let cartItemClone = cartItem;
+        let addedItem = cartItem.find(item=> item.id == id)
+        var index = cartItem.indexOf(id);
+        if(addedItem.count>1){ 
+            addedItem.count--;
+        }
+        if (~index) { 
+            cartItem[index] = addedItem;
+        }
+        console.log(cartItem);
+        setCartItem(cartItem);
+     
+        localStorage.setItem('cartItems',JSON.stringify(cartItem));
     }
   
     // console.log(JSON.parse(localStorage.getItem('state')))
-    // let addedItems = JSON.parse(localStorage.getItem('state')).length ?
-    let addedItems = props.items.length?
+    let addedItems = cartItem.length ?
+    // let addedItems = props.items.length?
     (  
         // JSON.parse(localStorage.getItem('state')).map(item=>{
-            props.items.map(item=>{ 
+            cartItem.map(item=>{ 
             return(
                
                 <li className="collection-item avatar" key={item.id}>
@@ -39,7 +73,7 @@ const CartScreen =(props)=>{
                                 <p>{item.desc}</p>
                                 <p><b>Price: {item.price}$</b></p> 
                                 <p>
-                                    <b>Quantity: {item.quantity}</b> 
+                                    <b>Quantity: {item.count}</b> 
                                 </p>
                                 <div className="add-remove">
                                     <Link to="/cart"><i className="material-icons" onClick={()=>{handleAddQuantity(item.id)}}>arrow_drop_up</i></Link>
@@ -63,22 +97,35 @@ const CartScreen =(props)=>{
                 {addedItems}
             </ul>
         </div>
-        <ShippingScreen key={props.history} id={props.history}/>                
+        {/* <ShippingScreen key={props.history} id={props.history}/>                 */}
+           <div className="container">
+                <div className="collection">
+                    <li className="collection-item"> 
+                        </li>
+                        <li className="collection-item"><b>Total: ${
+                            cartItem.reduce((a,c)=> a + c.count * c.price, 0) 
+                        }</b></li>
+                    </div>
+                    <div className="checkout">
+                        <button onClick={(e)=>handleClick(e)} className="waves-effect waves-light btn">Checkout</button>
+                    </div>
+                 </div>
     </div>
 
     )
 }
 
-const mapStateToProps = (state)=>{
-    return{
-        items: state.addedItems
-    }
-}
-const mapDispatchToProps = (dispatch)=>{
-    return{
-        removeItem: (id)=>{dispatch(removeItem(id))},
-        addQuantity: (id)=>{dispatch(addQuantity(id))},
-        subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
-    }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(CartScreen) 
+// const mapStateToProps = (state)=>{
+//     return{
+//         items: state.addedItems
+//     }
+// }
+// const mapDispatchToProps = (dispatch)=>{
+//     return{
+//         removeItem: (id)=>{dispatch(removeItem(id))},
+//         addQuantity: (id)=>{dispatch(addQuantity(id))},
+//         subtractQuantity: (id)=>{dispatch(subtractQuantity(id))}
+//     }
+// }
+// export default connect(mapStateToProps,mapDispatchToProps)(CartScreen) 
+export default CartScreen;

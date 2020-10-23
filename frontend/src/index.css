@@ -45,7 +45,8 @@ header{
   align-items: center;
   font-size: larger;
   font-weight: bold;
-}
+} 
+
 footer{
   background-color: black;
   color: white; 
@@ -96,7 +97,7 @@ main {
   margin-top: auto; 
 }
 .product-info h6{
-  margin: 1rem;
+  margin: -1rem;
   font-size: larger;
   text-align: center;
 }
