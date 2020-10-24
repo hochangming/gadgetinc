@@ -23,7 +23,7 @@ const LoginScreen=(props)=>{
             window.location.reload(); 
 
         } else {
-            alert("Click OK to sign up");
+            alert("You haven't signed up. Click OK to sign up");
             props.history.push('/register')
         }
         }).catch(err=>{

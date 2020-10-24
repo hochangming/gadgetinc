@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   
   /* background-image: url(/images/backimg5.jpg);  */
-  background-color: lightyellow;
+  background-color: white;
      /* Full height */
     height: 100%; 
     /* Center and scale the image nicely */
@@ -27,26 +27,50 @@ code {
   /* Direction of the items, can be row or column */
   flex-direction: column;
 }
+header{
+  background-color: black;
+  color: white; 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  align-items: center;
+  font-size: larger;
+  font-weight: bold;
+} 
+
+footer{
+  background-color: black;
+  color: white; 
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+
+} 
+main {
+  flex: 1;
+}
 
 .sidebarbtn{
-  font-size: 30px;
+  font-size: 27px;
   border: none;
-  color: white;
-  padding: 10px;
+  color: white; 
   background-color: black;
-   height:100%;
-   cursor: pointer;
+  height:100%;
+  cursor: pointer;
 
 }
 .sidebarcon{
   position: fixed;
   transform: translateX(-15rem);
   width: 15rem;
-  background-color: lightyellow;
+  background-color: whitesmoke;
   transition: all 0.3s;
   height:100%;
 }
-
+.homebutton{
+  font-size: 25px;
+}
 .openSidebar{
   transform: translateX(0);
 }
@@ -96,28 +120,6 @@ a{
 a:hover{
   color:red;
 }
-header{
-  background-color: black;
-  color: white;
-  height: 70px;
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  font-size: larger;
-  font-weight: bold;
-} 
-
-footer{
-  background-color: black;
-  color: white; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-} 
-main {
-  flex: 1;
-}
 
 .products {
   display: flex; 
@@ -133,13 +135,16 @@ main {
   display: flex; /* so child elements can use flexbox stuff too! */
   flex-direction: column;
 }
-
+.md-form{ 
+  display: flex; 
+  flex-direction: column;
+  padding: 3rem;
+} 
 .product-image img {
   border-top: 0.1rem solid grey;  
-  padding: 2rem;  
+  padding: 1rem;  
   width:  300px;
-  height: 300px; 
-  mix-blend-mode: multiply;
+  height: 300px;  
   transition: transform 0.5s;
   
 }
@@ -157,7 +162,7 @@ main {
   color:red
 }
 .product-info {
-  padding: 2rem; 
+  padding: 1rem; 
   margin-top: auto; 
 }
 .product-info h6{
@@ -180,34 +185,19 @@ main {
 }
 .product-action button:hover{
   color: red;
-}
-@media (max-width: 920px) {
-  .product-card {
-    flex: 1 21%;
-  }
-}
+} 
  .product-details{
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
- }
- @media all and (min-width: 480px) {
-  .Login {
-    padding: 60px 0;
-  }
-
-  .Login form {
-    margin: 0 auto;
-    max-width: 320px;
-  }
-}
+ } 
 
 .item-img{
   mix-blend-mode: multiply;
 
 }
 
-.Sign-in-screen, .register-screen {
+/* .Sign-in-screen, .register-screen {
   display: flex;
   justify-content: center;
   align-items: center; 
@@ -216,29 +206,35 @@ main {
   border-radius: 0.2rem;
   height:29rem;
   
-} 
-.forgot-password a{
-  color:blue
+}   */
+.forgot-password{
+  display:block; 
+  padding-left:-0.5rem;
+  align-items: center;
+
+}
+.forgot-password a{ 
+  color:blue;   
 }
 .forgot-password a:hover{
   color:red
 }
- .Sign-in-screen .form-group{
+ /* .Sign-in-screen .form-group{
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;  
   justify-content: center; 
   align-items: center;  
   margin: 0rem;
- }
-.register-screen .form-group{
+ } */
+/* .register-screen .form-group{
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;  
   justify-content: center; 
   align-items: center;  
   margin: 0rem;
- }
+ } */
 
  .form-control{
    margin-bottom: 1rem;
@@ -250,7 +246,8 @@ main {
   .btn-primary{
     
     margin-top: 1.5rem;
-    height:2.5rem; 
+    margin-bottom:1.7rem;
+    height:3rem; 
     width:10rem;
     cursor: pointer;
   }
@@ -265,7 +262,7 @@ main {
   .collection{ 
     list-style-type: none;
   }
-.collection-item-2{
+  .collection-item-2{
       border: 0.1rem solid grey; 
       border-radius: 0.2rem; 
       font-size:larger

@@ -4,7 +4,10 @@ import Axios from 'axios';
 import config from '../config';
 import Cookie from 'js-cookie'
 const HomeScreen =(props)=>{
- 
+  const [value, setValue] = useState("");
+  const [category, setCategory] = useState(JSON.parse(localStorage.getItem('Category')));
+  const category1 = props.match.params.id ? props.match.params.id : '';
+
   const [items, setItems] = useState([])
   const [loaded, setLoaded] = useState(false);  
   
@@ -14,20 +17,55 @@ const HomeScreen =(props)=>{
       console.log(response.data);
       setItems(response.data);
       localStorage.setItem('dataproducts',JSON.stringify(response.data));
-      Cookie.set('dataproducts',response.data)
+      Cookie.set('dataproducts',response.data);
+      // setCategory(JSON.parse(localStorage.getItem('Category')));
      setLoaded(true);
+    }).catch(err=>{
+      console.log(err)
     })
     return () => {
        
     }
   }, [])
-
-    console.log();
+  const sortArray = type => { 
+    if(type==='Highest'){
+      const sorted = [...items].sort((a, b) =>parseInt(b.price)- parseInt(a.price))  
+      setItems(sorted); 
+    } else{
+      const sorted = [...items].sort((a, b) =>parseInt(a.price)- parseInt(b.price))   
+      setItems(sorted);
+    } 
+    
+  };  
     return ( 
       <div> 
       { !loaded?<div>loading...</div> :
-        <section class="products">  
-         {items.map(item=>{
+        <section className="products">  
+          <div className="md-form active-cyan active-cyan-2 mb-3 "> 
+                <input class="form-control" aria-label="Search"
+                type="text"
+                placeholder="Search..."
+                value={value}
+                onChange={e => setValue(e.target.value.toLowerCase())}
+            />
+            <select className=" btn btn-sm btn-light dropdown-toggle dropdown-toggle-split" onChange={(e) => sortArray(e.target.value)}>  
+              <option value="Lowest">Lowest</option>
+              <option value="Highest">Highest</option>
+            </select> 
+          </div>
+
+
+         {items.filter(item => {
+           
+          //  setCategory(localStorage.getItem('Category'))
+                
+           console.log(category)
+                // if (!value) return true; 
+                if (item.title.toLowerCase().includes(value)|| item.title.toLowerCase().includes(value) || item.category===category  ) { 
+                  return true;
+                }
+                return false;
+            }).map(item=>{
                 return  <div class="product-card">  
                 <div class="product-image">
                   <Link to = {'/' + item.id}   > 

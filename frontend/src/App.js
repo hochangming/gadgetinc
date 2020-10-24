@@ -10,12 +10,12 @@ import UserScreen from './Screens/UserScreen';
 import ShippingScreen from './Screens/ShippingScreen';
 import {FaShoppingCart, FaHome} from "react-icons/fa"
 
-//  const open = () => {
-//   document.querySelector(".sidebarcon").classList.add("openSidebar");
-// }
-// const close = () =>{
-//   document.querySelector(".sidebarcon").classList.remove("openSidebar");
-// }
+ const open = () => {
+  document.querySelector(".sidebarcon").classList.add("openSidebar");
+}
+const close = () =>{
+  document.querySelector(".sidebarcon").classList.remove("openSidebar");
+}
 function App() {
   const [state, setstate] = useState(); 
   useEffect(() => {
@@ -27,9 +27,11 @@ function App() {
     <BrowserRouter>
       <div class="wrapper">
           <header>
-           {/* <button className="sidebarbtn" onClick={open}>
-              &#9776;</button> */}
-          <Link to="/">Home<FaHome/></Link> 
+            <div> 
+            <button className="sidebarbtn" onClick={open}>
+              &#9776;</button>
+            <Link className = "homebutton"to="/">Home<FaHome/></Link> 
+            </div>
           <h1>Gadget Inn</h1>
           <div>
           {localStorage.getItem('loginState') ? 
@@ -40,22 +42,23 @@ function App() {
           <Link to="/cart">Cart<FaShoppingCart/></Link> 
           </div>
            </header>
-                     {/* <aside className="sidebarcon">
+          <aside className="sidebarcon">
             <h3 className = "header3">Shop By Category</h3>
             <ul className="sidebarcon-menu">
               <button className="button-close"
                 onClick={close}>Close &times;</button>
-              <li><Link to="/category/Mobile Phones">Mobile Phones</Link></li>
-              <li><Link to="/category/Tablets">Tablets</Link></li>
+              <li><Link to="/category/Mobile Phones"  onClick={() =>localStorage.setItem('Category', JSON.stringify('Mobile Phones'))}>Mobile Phones</Link></li>
+              <li><Link to="/category/Tablets" onClick={() =>localStorage.setItem('Category', JSON.stringify('Tablets'))}>Tablets</Link></li>
             </ul>
-          </aside> */}
+          </aside>
           <main>
           <Switch> 
           <Route path ="/user" component={UserScreen}></Route>  
           <Route path ="/register" component={RegisterScreen}></Route> 
           <Route path ="/login" component={LoginScreen}></Route>
           <Route path ="/cart" component={CartScreen}></Route>   
-          <Route path ="/:id" component={ProductScreen}></Route> 
+          <Route exact path ="/:id" component={ProductScreen}></Route> 
+          <Route exact path ="/category/:id" component={HomeScreen}></Route> 
           <Route exact path ="/" component={HomeScreen}></Route>
           </Switch>
           </main>
