@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios'; 
 import config from '../config';
 import Cookie from 'js-cookie'
+
+ 
 const HomeScreen =(props)=>{
   const [value, setValue] = useState("");
-  const [category, setCategory] = useState(JSON.parse(localStorage.getItem('Category')));
-  const category1 = props.match.params.id ? props.match.params.id : '';
-
+  const category = props.match.params.id ? props.match.params.id : '';
+  
   const [items, setItems] = useState([])
   const [loaded, setLoaded] = useState(false);  
   
@@ -37,6 +38,7 @@ const HomeScreen =(props)=>{
     } 
     
   };  
+  console.log(items)
     return ( 
       <div> 
       { !loaded?<div>loading...</div> :
@@ -55,29 +57,62 @@ const HomeScreen =(props)=>{
           </div>
 
 
-         {items.filter(item => {
-           
-          //  setCategory(localStorage.getItem('Category'))
-                
-           console.log(category)
-                // if (!value) return true; 
-                if (item.title.toLowerCase().includes(value)|| item.title.toLowerCase().includes(value) || item.category===category  ) { 
-                  return true;
-                }
-                return false;
-            }).map(item=>{
-                return  <div class="product-card">  
-                <div class="product-image">
-                  <Link to = {'/' + item.id}   > 
-                    <img src= {item.image}></img> 
-                    <h5>{item.title}</h5> 
-                  </Link>
-                 <div class="product-info"> 
-                    <h6>${item.price}</h6>
-                  </div>
-                </div> 
-                </div>  
-            })}      
+         {  
+          category?
+          items.filter(item =>
+          { 
+                  if(category){
+                    if(item.category === props.match.params.id) 
+                    {   console.log(typeof(props.match.params.id)) 
+                        console.log(typeof( typeof(item.id)))
+                      return true;  
+                    }
+                  } 
+                  return false;
+              }
+              ).map(item=>{
+                  return  <div class="product-card">  
+                  <div class="product-image">
+                    <Link to = {'/' + item.id}   > 
+                      <img src= {item.image}></img> 
+                      <h5>{item.title}</h5> 
+                    </Link>
+                  <div class="product-info"> 
+                      <h6>${item.price}</h6>
+                    </div>
+                  </div> 
+                  </div>  
+              }) :          items.filter(item =>
+                { 
+                        if(category){
+                          if(item.category === props.match.params.id) 
+                          {   console.log(typeof(props.match.params.id)) 
+                              console.log(typeof( typeof(item.id)))
+                            return true;  
+                          }
+                        }
+                        
+                        if (!value) return true; 
+                        if (item.title.toLowerCase().includes(value)|| item.title.toLowerCase().includes(value)) { 
+                          return true;
+                        }
+                        return false;
+                    }
+                    ).map(item=>{
+                        return  <div class="product-card">  
+                        <div class="product-image">
+                          <Link to = {'/' + item.id}   > 
+                            <img src= {item.image}></img> 
+                            <h5>{item.title}</h5> 
+                          </Link>
+                        <div class="product-info"> 
+                            <h6>${item.price}</h6>
+                          </div>
+                        </div> 
+                        </div>  
+                    })
+              
+        }      
       </section>}
   </div>
 
