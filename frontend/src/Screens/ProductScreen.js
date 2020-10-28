@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import arrayOfObjects from '../data';
-import { connect } from 'react-redux'
-// import { addToCart } from '../actions/cartActions'
+import { Link } from 'react-router-dom';  
 import Axios from 'axios'; 
 import config from '../config';
 const ProductScreen =(props)=>{

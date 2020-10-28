@@ -19,8 +19,7 @@ const HomeScreen =(props)=>{
       setItems(response.data);
       localStorage.setItem('dataproducts',JSON.stringify(response.data));
       Cookie.set('dataproducts',response.data);
-      // setCategory(JSON.parse(localStorage.getItem('Category')));
-     setLoaded(true);
+      setLoaded(true);
     }).catch(err=>{
       console.log(err)
     })
@@ -55,8 +54,7 @@ const HomeScreen =(props)=>{
               <option value="Highest">Highest</option>
             </select> 
           </div>
-
-
+ 
          {  
           category?
           items.filter(item =>

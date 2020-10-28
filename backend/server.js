@@ -1,7 +1,8 @@
 import cors from 'cors';
 import express from 'express';
 import mysql from 'mysql'; 
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 
 
@@ -14,8 +15,8 @@ const app = express();
 // }); 
 var con = {
   host: "us-cdbr-east-02.cleardb.com",
-  user: "bfa546afba69ce",
-  password: "16962866",
+  user: process.env.REACT_APP_USER,
+  password: process.env.REACT_APP_PASSWORD,
   database: "heroku_a9046155c2a5415",
   port: "3306"
 }; 

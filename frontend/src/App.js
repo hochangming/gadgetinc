@@ -16,13 +16,32 @@ import {FaShoppingCart, FaHome} from "react-icons/fa"
 const close = () =>{
   document.querySelector(".sidebarcon").classList.remove("openSidebar");
 }
+const ChildComponent = ({ parentCallback  }) => {
+  const [state, setstate] = useState(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : '');
+    
+  return (
+      <button onClick={() => {
+          const newValue = state ;
+          setstate(newValue);
+          parentCallback(newValue);
+      }}>
+           Click me 
+      </button>
+  )
+};
 function App() {
-  const [state, setstate] = useState(); 
+  const [state, setstate] = useState(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : ''); 
   useEffect(() => {
-    setstate(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : '')
+    // setstate(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : '')
      return () => { 
     }
   }, [])
+  const callback = (state) => {
+    // do something with value in parent component, like save to state
+    setstate(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : '')
+
+  }
+
    return (
     <BrowserRouter>
       <div class="wrapper">
@@ -34,8 +53,9 @@ function App() {
             </div>
           <h1>Gadget Inn</h1>
           <div>
+          {/* <ChildComponent parentCallback={callback} />          */}
           {localStorage.getItem('loginState') ? 
-          (<Link to="/user">{state}</Link>): 
+          (<Link to="/user" >{state}</Link>): 
           <Link to="/login">Log In</Link>
           }
           

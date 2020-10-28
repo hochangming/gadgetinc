@@ -5,10 +5,11 @@ import { Button, FormGroup, FormControl } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import config from '../config';
 import Cookie from 'js-cookie'
-const LoginScreen=(props)=>{
+const LoginScreen=(props,{parentCallback})=>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-  
+    // const [userEmail, setUserEmail] = useState("");
+
     const handleSubmit=(e)=>{
         e.preventDefault();
         Axios.get(`${config.SERVER_URI}/api/login`).then(response=>{
@@ -19,8 +20,11 @@ const LoginScreen=(props)=>{
             // alert("Login Successful");
             localStorage.setItem('loginState', JSON.stringify(response.data.find(user => user.emailAddress == email)))  
             // Cookie.set('loginState',JSON.stringify(response.data.find(user => user.emailAddress == email)))
+            // setUserEmail(response.data.find(user => user.emailAddress == email)) 
+            // parentCallback(response.data.find(user => user.emailAddress == email));
             props.history.push('/');
-            window.location.reload(); 
+
+            // window.location.reload(); 
 
         } else {
             alert("You haven't signed up. Click OK to sign up");
