@@ -5,14 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 const app = express();
 
-
-// var con = mysql.createPool({
-//   host: "us-cdbr-east-02.cleardb.com",
-//   user: "bfa546afba69ce",
-//   password: "16962866",
-//   database: "heroku_a9046155c2a5415",
-//   port: "3306"
-// }); 
 var con = {
   host: "us-cdbr-east-02.cleardb.com",
   user: process.env.REACT_APP_USER,
