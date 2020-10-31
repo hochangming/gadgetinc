@@ -102,8 +102,7 @@ class PaypalButton extends React.Component {
         {paid && (
           <div className="main"> 
             <h2>
-              Congrats! you just paid for that picture. Work a little harder and
-              you'll be able to afford the car itself{" "}
+              Order confirmed. Item will be shipped to you in a couple of days.{" "}
               <span role="img" aria-label="emoji">
                 {" "}
                 😉
