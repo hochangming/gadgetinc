@@ -12,7 +12,7 @@ const UserScreen=(props)=>{
     }
     return (
     <div style={{ height: "500px" }} className="d-flex justify-content-center align-items-center">
-        <button type="button" className="waves-effect " onClick={(e)=>handleClick(e)}>Log Out</button>
+        <button type="button" className="waves-effect log-out-button" onClick={(e)=>handleClick(e)}>Log Out</button>
     </div>
 
     )

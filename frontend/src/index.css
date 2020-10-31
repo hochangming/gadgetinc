@@ -292,6 +292,15 @@ a:hover{
     width: 20rem;
    cursor:pointer;
  } 
+ .log-out-button{
+  height:3rem;
+  width: 20rem;
+  cursor:pointer;
+  font-size: large;
+ }
+ .log-out-button:hover{ 
+   color: red;
+ }
   .checkout{  
     display:block;
     width:20rem;
