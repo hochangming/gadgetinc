@@ -1,14 +1,10 @@
-import Axios from 'axios';
-import { json } from 'body-parser';
+import Axios from 'axios'; 
 import React, { useEffect, useState } from 'react';
-import { Button, FormGroup, FormControl } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import config from '../config';
-import Cookie from 'js-cookie'
-const LoginScreen=(props,{parentCallback})=>{
+const LoginScreen=(props)=>{
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    // const [userEmail, setUserEmail] = useState("");
+    const [password, setPassword] = useState(""); 
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -23,13 +19,12 @@ const LoginScreen=(props,{parentCallback})=>{
             // setUserEmail(response.data.find(user => user.emailAddress == email)) 
             // parentCallback(response.data.find(user => user.emailAddress == email));
             if(localStorage.getItem('checkOutSignin')){ 
-                props.history.push('/checkout');
+                props.history.push('/cart');
                 localStorage.removeItem('checkOutSignin')
             } else{
                 props.history.push('/');
             }
-
-
+ 
             window.location.reload(); 
 
         } else {

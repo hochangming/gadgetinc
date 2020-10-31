@@ -429,7 +429,8 @@ a:hover{
   .main1{
     display: flex; 
     flex-wrap: wrap;
-    margin: 1rem; 
+    margin-top: 1rem; 
+    margin-left: 17rem; 
   }
   .main-1-border img{
     border: 0.1rem solid grey;
@@ -438,7 +439,7 @@ a:hover{
   }
   .main2{
     display: block;
-    margin-left:4rem ;
+    margin-left:8rem ;
   }
   .btn-xl{
     display: block;

@@ -1,8 +1,5 @@
-import Axios from 'axios';
 import React, { Component, useEffect,useState } from 'react';
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { removeItem,addQuantity,subtractQuantity} from '../actions/cartActions' 
 
 const CartScreen =(props)=>{ 
     const [cartItem, setCartItem] = useState(localStorage.getItem('cartItems')? JSON.parse(localStorage.getItem('cartItems')): [])

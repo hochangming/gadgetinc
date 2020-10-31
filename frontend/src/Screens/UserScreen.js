@@ -1,5 +1,5 @@
 import React from 'react';
-import Cookie from 'js-cookie'
+
 const UserScreen=(props)=>{
 
     const handleClick=(e)=>{
