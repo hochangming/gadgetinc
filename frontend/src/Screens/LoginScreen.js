@@ -19,8 +19,7 @@ const LoginScreen=(props)=>{
             // setUserEmail(response.data.find(user => user.emailAddress == email)) 
             // parentCallback(response.data.find(user => user.emailAddress == email));
             if(localStorage.getItem('checkOutSignin')){  
-                props.history.push('/checkout'); 
-                window.location.reload();  
+                props.history.push('/checkout');  
                 localStorage.removeItem('checkOutSignin')
             } else{
                 props.history.push('/');
