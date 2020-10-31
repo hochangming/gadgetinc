@@ -7,8 +7,7 @@ dotenv.config();
 const CLIENT = {
   sandbox: 'AfaQC3ylLxN-avas-HfrG67_TKCROLdK3u22atoB9RXknvDnx3EKrW6WO1Tun6jP6y9F23wbegV8Kimw',
   production:'AfaQC3ylLxN-avas-HfrG67_TKCROLdK3u22atoB9RXknvDnx3EKrW6WO1Tun6jP6y9F23wbegV8Kimw'
-};
-console.log(CLIENT.sandbox)
+}; 
 const CLIENT_ID =
    process.env.NODE_ENV === "production" ? CLIENT.production : CLIENT.sandbox;
 
