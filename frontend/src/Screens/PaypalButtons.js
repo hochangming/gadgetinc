@@ -89,11 +89,11 @@ class PaypalButton extends React.Component {
         {showButtons && (
           <div>
             <div> 
-              <h3><b> Total <span   style={{ color: 'black' }} > ${this.state.cartItems.reduce((a,c)=> a + c.count * c.price -(50/100*c.price), 0)}</span></b></h3>
+              <h3><b> Total <span   style={{ color: 'black' }} > ${this.state.cartItems.reduce((a,c)=> a + c.count * c.price, 0)}</span></b></h3>
             </div>
 
             <PayPalButton
-              createOrder={(data, actions) => this.createOrder(this.state.cartItems.reduce((a,c)=> a + c.count * c.price -(50/100*c.price), 0), actions)}
+              createOrder={(data, actions) => this.createOrder(this.state.cartItems.reduce((a,c)=> a + c.count * c.price, 0), actions)}
               onApprove={(data, actions) => this.onApprove(data, actions)}
             />
           </div>
