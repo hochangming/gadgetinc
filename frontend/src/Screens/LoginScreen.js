@@ -22,9 +22,15 @@ const LoginScreen=(props,{parentCallback})=>{
             // Cookie.set('loginState',JSON.stringify(response.data.find(user => user.emailAddress == email)))
             // setUserEmail(response.data.find(user => user.emailAddress == email)) 
             // parentCallback(response.data.find(user => user.emailAddress == email));
-            props.history.push('/');
+            if(localStorage.getItem('checkOutSignin')){ 
+                props.history.push('/checkout');
+                localStorage.removeItem('checkOutSignin')
+            } else{
+                props.history.push('/');
+            }
 
-            // window.location.reload(); 
+
+            window.location.reload(); 
 
         } else {
             alert("You haven't signed up. Click OK to sign up");

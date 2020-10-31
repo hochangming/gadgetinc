@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';  
 import Axios from 'axios'; 
 import config from '../config';
+import Spinner from "./Spinner"; 
+
 const ProductScreen =(props)=>{
     const [productImg, setProductImg] = useState();
     const [productDesc, setProductDesc] = useState();
@@ -41,24 +43,23 @@ const ProductScreen =(props)=>{
         if(existedItem==false){ 
             setCartItems(cartItemsClone.push({...product, count: 1}));
         } 
-        localStorage.setItem('cartItems', JSON.stringify(cartItems)); 
-        //  props.addToCart(id); 
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));  
             props.history.push('/cart'); 
     }
     return ( 
         <div> 
-        { !loaded?<div>loading...</div> :  
+        { !loaded?<div> <Spinner /></div> :  
             <div className="product-details"> 
-            <div className="product-image">
-                <img src= {productImg} ></img>
+                <div className="product-image">
+                    <img className="all-image" src= {productImg} ></img>
 
-            </div>
-            <div className="product-detail">
-                Description: {productDesc}
-                    
-            </div>
-            <div className="product-action">
-              <button onClick={()=>{handleClick(itemsId)}}>  Add to cart</button>
+                </div>
+                <div className="product-detail">
+                    Description: {productDesc}
+                        
+                </div>
+                <div className="product-action">
+                    <button onClick={()=>{handleClick(itemsId)}}>Add to cart</button>
 
             </div>
         </div>}

@@ -6,9 +6,9 @@ import ProductScreen from './Screens/ProductScreen';
 import CartScreen from './Screens/CartScreen';
 import LoginScreen from './Screens/LoginScreen';
 import RegisterScreen from './Screens/RegisterScreen';
-import UserScreen from './Screens/UserScreen';
-import ShippingScreen from './Screens/ShippingScreen';
+import UserScreen from './Screens/UserScreen'; 
 import {FaShoppingCart, FaHome} from "react-icons/fa"
+import CheckoutForm from './Screens/CheckoutForm';
 
  const open = () => {
   document.querySelector(".sidebarcon").classList.add("openSidebar");
@@ -73,6 +73,7 @@ function App() {
           </aside>
           <main>
           <Switch> 
+          <Route path="/checkout" component={CheckoutForm}></Route>
           <Route path ="/user" component={UserScreen}></Route>  
           <Route path ="/register" component={RegisterScreen}></Route> 
           <Route path ="/login" component={LoginScreen}></Route>

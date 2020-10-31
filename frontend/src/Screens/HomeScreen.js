@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Axios from 'axios'; 
 import config from '../config';
 import Cookie from 'js-cookie'
+import Spinner from "./Spinner"; 
 
  
 const HomeScreen =(props)=>{
@@ -40,7 +41,7 @@ const HomeScreen =(props)=>{
   console.log(items)
     return ( 
       <div> 
-      { !loaded?<div>loading...</div> :
+      { !loaded?<div> <Spinner /></div> :
         <section className="products">  
           <div className="md-form active-cyan active-cyan-2 mb-3 "> 
                 <input class="form-control" aria-label="Search"
