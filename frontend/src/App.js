@@ -51,7 +51,7 @@ function App() {
               &#9776;</button>
             <Link className = "homebutton"to="/">Home<FaHome/></Link> 
             </div>
-          <h1>Gadget Inn</h1>
+          <h1>Gadget Inc</h1>
           <div>
           {/* <ChildComponent parentCallback={callback} />          */}
           {localStorage.getItem('loginState') ? 
@@ -84,7 +84,7 @@ function App() {
           </Switch>
           </main>
           
-          <footer> &copy;GadgetInn2020
+          <footer> &copy;GadgetInc2020
           </footer>
       </div>
 </BrowserRouter>

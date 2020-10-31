@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const CLIENT = {
   sandbox: process.env.REACT_APP_PAYPAL_API_KEY,
-  production:"your client id"
+  production:process.env.REACT_APP_PAYPAL_API_KEY
 };
 console.log(CLIENT.sandbox)
 const CLIENT_ID =
