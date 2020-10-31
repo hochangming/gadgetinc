@@ -16,7 +16,7 @@ const CartScreen =(props)=>{
                 props.history.push('/login')
             }
         } else{
-            alert("There's no items in your cart!")
+            alert("There are no items in your cart!")
         }
 
     }

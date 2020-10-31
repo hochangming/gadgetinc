@@ -18,15 +18,15 @@ const LoginScreen=(props)=>{
             // Cookie.set('loginState',JSON.stringify(response.data.find(user => user.emailAddress == email)))
             // setUserEmail(response.data.find(user => user.emailAddress == email)) 
             // parentCallback(response.data.find(user => user.emailAddress == email));
-            if(localStorage.getItem('checkOutSignin')){ 
-                props.history.push('/cart');
+            if(localStorage.getItem('checkOutSignin')){  
+                props.history.push('/checkout'); 
+                window.location.reload();  
                 localStorage.removeItem('checkOutSignin')
             } else{
                 props.history.push('/');
+                window.location.reload(); 
             }
- 
-            window.location.reload(); 
-
+  
         } else {
             alert("You haven't signed up. Click OK to sign up");
             props.history.push('/register')
