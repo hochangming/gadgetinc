@@ -5,8 +5,8 @@ import Spinner from "./Spinner";
 import dotenv from "dotenv"; 
 dotenv.config();
 const CLIENT = {
-  sandbox: 'AfaQC3ylLxN-avas-HfrG67_TKCROLdK3u22atoB9RXknvDnx3EKrW6WO1Tun6jP6y9F23wbegV8Kimw',
-  production:'AfaQC3ylLxN-avas-HfrG67_TKCROLdK3u22atoB9RXknvDnx3EKrW6WO1Tun6jP6y9F23wbegV8Kimw'
+  sandbox: process.env.REACT_APP_PAYPAL_API_KEY,
+  production: process.env.REACT_APP_PAYPAL_API_KEY
 }; 
 const CLIENT_ID =
    process.env.NODE_ENV === "production" ? CLIENT.production : CLIENT.sandbox;
