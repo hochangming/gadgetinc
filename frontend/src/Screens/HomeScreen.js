@@ -22,7 +22,7 @@ const HomeScreen =(props)=>{
       Cookie.set('dataproducts',response.data); 
       setLoaded(true);
       if(localStorage.getItem('checkOutSignin')){  
-          props.history.push('/checkout');  
+          props.history.push('/cart');  
           localStorage.removeItem('checkOutSignin') 
       } 
     }).catch(err=>{
