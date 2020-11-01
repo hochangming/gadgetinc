@@ -265,11 +265,11 @@ a:hover{
   .collection{ 
     list-style-type: none; 
   }
-  li {
+  /* li {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-  }
+  } */
   li img{
     width: 200px;
     height: 200px;
@@ -281,12 +281,15 @@ a:hover{
 
 }
 .description{
-  width: 1160px; 
+    width: 1160px; 
 }
 .collection-item{
-      border: 0.1rem solid grey; 
-      border-radius: 0.2rem;
-      padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: 0.1rem solid grey; 
+    border-radius: 0.2rem;
+    padding: 2rem;
 }
  .waves-effect{
     width: 20rem;
