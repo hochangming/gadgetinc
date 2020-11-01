@@ -13,7 +13,7 @@ const CartScreen =(props)=>{
                 console.log(props.id) 
                 alert('Sign In First')
                 localStorage.setItem('checkOutSignin',JSON.stringify('checkOutSignin'))
-                // props.history.push('/login')
+                props.history.push('/login')
             }
         } else{
             alert("There are no items in your cart!")

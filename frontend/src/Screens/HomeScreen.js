@@ -19,8 +19,12 @@ const HomeScreen =(props)=>{
       console.log(response.data);
       setItems(response.data);
       localStorage.setItem('dataproducts',JSON.stringify(response.data));
-      Cookie.set('dataproducts',response.data);
+      Cookie.set('dataproducts',response.data); 
       setLoaded(true);
+      if(localStorage.getItem('checkOutSignin')){  
+          props.history.push('/checkout');  
+          localStorage.removeItem('checkOutSignin') 
+      } 
     }).catch(err=>{
       console.log(err)
     })
