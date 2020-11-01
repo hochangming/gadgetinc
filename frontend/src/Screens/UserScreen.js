@@ -4,8 +4,7 @@ const UserScreen=(props)=>{
 
     const handleClick=(e)=>{
         e.preventDefault();
-        localStorage.removeItem('loginState');
-        // Cookie.remove('loginState');
+        localStorage.removeItem('loginState'); 
         props.history.push('/')
         window.location.reload();
 

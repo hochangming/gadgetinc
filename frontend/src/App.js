@@ -16,19 +16,7 @@ import CheckoutForm from './Screens/CheckoutForm';
 const close = () =>{
   document.querySelector(".sidebarcon").classList.remove("openSidebar");
 }
-const ChildComponent = ({ parentCallback  }) => {
-  const [state, setstate] = useState(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : '');
-    
-  return (
-      <button onClick={() => {
-          const newValue = state ;
-          setstate(newValue);
-          parentCallback(newValue);
-      }}>
-           Click me 
-      </button>
-  )
-};
+
 function App() {
   const [state, setstate] = useState(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : ''); 
   useEffect(() => {
@@ -36,11 +24,6 @@ function App() {
      return () => { 
     }
   }, [])
-  const callback = (state) => {
-    // do something with value in parent component, like save to state
-    setstate(localStorage.getItem('loginState') ? JSON.parse(localStorage.getItem('loginState')).emailAddress : '')
-
-  }
 
    return (
     <BrowserRouter>
@@ -52,8 +35,7 @@ function App() {
             <Link className = "homebutton"to="/">Home<FaHome/></Link> 
             </div>
           <h1>Gadget Inc</h1>
-          <div>
-          {/* <ChildComponent parentCallback={callback} />          */}
+          <div> 
           {localStorage.getItem('loginState') ? 
           (<Link to="/user" >{state}</Link>): 
           <Link to="/login">Log In</Link>

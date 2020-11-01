@@ -84,8 +84,8 @@ const HomeScreen =(props)=>{
                     </div>
                   </div> 
                   </div>  
-              }) :          items.filter(item =>
-                { 
+              }) : items.filter(item =>
+                    { 
                         if(category){
                           if(item.category === props.match.params.id) 
                           {   console.log(typeof(props.match.params.id)) 

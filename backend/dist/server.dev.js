@@ -50,23 +50,7 @@ function handleDisconnect() {
   });
 }
 
-handleDisconnect(); // var con = mysql.createPool({
-//   host: "localhost",
-//   user: "root",
-//   password: "password",
-//   database: "ecommerce",
-//   port: "3306"
-// }); 
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-//   var sql = "CREATE TABLE productsdata (id VARCHAR(255), title VARCHAR(255), desc VARCHAR(255), price VARCHAR(255), image VARCHAR(255))";
-//   con.query(sql, function (err, result) {
-//     if (err) throw err;
-//     console.log("Table created");
-//   });
-// });
-
+handleDisconnect();
 var port = process.env.PORT || 5000;
 app.use((0, _cors["default"])());
 app.use(_express["default"].json());

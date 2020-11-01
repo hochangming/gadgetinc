@@ -65,17 +65,4 @@ const ProductScreen =(props)=>{
     </div>
     )
 }
-// const mapStateToProps = (state)=>{
-//     return {
-//       items: state.items
-//     }
-//   }
-//   const mapDispatchToProps= (dispatch)=>{
-    
-//     return{
-//         addToCart: (id)=>{dispatch(addToCart(id))}
-//     }
-// }
-
-//  export default connect(mapStateToProps,mapDispatchToProps)(ProductScreen)
 export default ProductScreen;

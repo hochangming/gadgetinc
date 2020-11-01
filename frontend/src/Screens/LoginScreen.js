@@ -13,13 +13,9 @@ const LoginScreen=(props)=>{
             console.log(response.data.find(user => user.emailAddress == email));
 
         if (response.data.length > 0 && response.data.find(user => user.emailAddress == email)) {
-            // alert("Login Successful");
-            localStorage.setItem('loginState', JSON.stringify(response.data.find(user => user.emailAddress == email)))  
-            // Cookie.set('loginState',JSON.stringify(response.data.find(user => user.emailAddress == email)))
-            // setUserEmail(response.data.find(user => user.emailAddress == email)) 
-            // parentCallback(response.data.find(user => user.emailAddress == email)); 
-                props.history.push('/');
-                window.location.reload(); 
+            localStorage.setItem('loginState', JSON.stringify(response.data.find(user => user.emailAddress == email))) 
+            props.history.push('/');
+            window.location.reload(); 
   
         } else {
             alert("You haven't signed up. Click OK to sign up");
