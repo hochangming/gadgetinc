@@ -18,8 +18,7 @@ const HomeScreen =(props)=>{
     Axios.get(`${config.SERVER_URI}/api`).then(response=>{
       console.log(response.data);
       setItems(response.data);
-      localStorage.setItem('dataproducts',JSON.stringify(response.data));
-      Cookie.set('dataproducts',response.data); 
+      localStorage.setItem('dataproducts',JSON.stringify(response.data)); 
       setLoaded(true);
       if(localStorage.getItem('checkOutSignin')){  
           props.history.push('/cart');  
