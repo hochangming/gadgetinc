@@ -23,11 +23,16 @@ const CartScreen =(props)=>{
  
     //  //to remove the item completely
     const handleRemove = (id)=>{
-        setCartItem(cartItem.filter(item => item.id !== id));
-        localStorage.setItem('cartItems',JSON.stringify(cartItem));
-        if (cartItem.length === 1) {
+        // setCartItem(cartItem.filter(item => item.id !== id));
+        console.log(cartItem.findIndex(item => item.id === id))
+        // let cartItemClones = cartItem.splice(cartItem.findIndex(item => item.id === id), 1);
+        let cartItemClones = cartItem.filter(item => item.id !== id)
+        setCartItem(cartItemClones)
+        localStorage.setItem('cartItems',JSON.stringify(cartItemClones));
+        console.log(cartItemClones)
+        if (cartItemClones.length === 0) {
         localStorage.removeItem("cartItems");
-    }
+        }
      }
      console.log(cartItem)
     //to add the quantity

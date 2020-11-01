@@ -17,16 +17,9 @@ const LoginScreen=(props)=>{
             localStorage.setItem('loginState', JSON.stringify(response.data.find(user => user.emailAddress == email)))  
             // Cookie.set('loginState',JSON.stringify(response.data.find(user => user.emailAddress == email)))
             // setUserEmail(response.data.find(user => user.emailAddress == email)) 
-            // parentCallback(response.data.find(user => user.emailAddress == email));
-            if(localStorage.getItem('checkOutSignin')){  
-                props.history.push('/');  
-                // localStorage.removeItem('checkOutSignin')
-                window.location.reload(); 
-
-            } else{
+            // parentCallback(response.data.find(user => user.emailAddress == email)); 
                 props.history.push('/');
                 window.location.reload(); 
-            }
   
         } else {
             alert("You haven't signed up. Click OK to sign up");
